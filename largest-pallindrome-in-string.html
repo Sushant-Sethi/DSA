@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  function largestPallindrome(inputString) {
+    inputString = inputString.toLowerCase();
+    // empty string and palindrome found in the input string
+    let newString = "";
+    // Loop for starting positions i in the string
+    for (i = 0; i < inputString.length; i++) {
+      // Loop for ending positions j in the string, starting from i + 1
+      for (j = i + 1; j < inputString.length + i; j++) {
+        // Extract the substring between positions i and j
+        let subString = inputString.slice(i, j);
+        // Check if the substring is a palindrome and longer than the current largest palindrome
+        if (
+          subString === subString.split("").reverse().join("") &&
+          subString.length > newString.length
+        ) {
+          // Set maxPalindrome to the new substring
+          newString = subString;
+        }
+      }
+    }
+    // Return the largest palindrome found
+    return newString;
+  }
+  console.log(
+    largestPallindrome(
+      "Hello Mam, how are you. Madam, do you know racecar? tattarrattat"
+    )
+  );
+</script>
